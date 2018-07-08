@@ -1,0 +1,143 @@
+{
+  "name": "linter-revive",
+  "version": "0.1.0",
+  "description": "Lint Go files, using Revive",
+  "keywords": [
+    "linter",
+    "golang",
+    "go",
+    "revive"
+  ],
+  "author": {
+    "name": "Markus Wiegand",
+    "email": "mail@morphy2k.io",
+    "url": "https://morphy2k.io"
+  },
+  "contributors": "https://github.com/morphy2k/linter-revive/graphs/contributors",
+  "license": "MIT",
+  "engines": {
+    "atom": ">=1.4.0 <2.0.0"
+  },
+  "main": "./lib/main",
+  "scripts": {
+    "lint": "eslint .",
+    "pretest": "npm run lint",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/morphy2k/linter-revive.git"
+  },
+  "bugs": {
+    "url": "https://github.com/morphy2k/linter-revive/issues"
+  },
+  "providedServices": {
+    "linter": {
+      "versions": {
+        "2.0.0": "provideLinter"
+      }
+    }
+  },
+  "dependencies": {
+    "atom-linter": "^10.0.0",
+    "atom-package-deps": "^4.0.1"
+  },
+  "devDependencies": {
+    "eslint": "^5.0.1",
+    "eslint-config-airbnb-base": "^13.0.0",
+    "eslint-plugin-import": "^2.7.0"
+  },
+  "eslintConfig": {
+    "env": {
+      "es6": true,
+      "node": true
+    },
+    "extends": [
+      "eslint:recommended",
+      "plugin:import/errors",
+      "plugin:import/warnings"
+    ],
+    "globals": {
+      "atom": "true"
+    },
+    "parserOptions": {
+      "ecmaVersion": 8,
+      "sourceType": "module"
+    },
+    "rules": {
+      "global-require": "off",
+      "import/no-unresolved": [
+        "error",
+        {
+          "ignore": [
+            "atom"
+          ]
+        }
+      ],
+      "strict": [
+        "error",
+        "global"
+      ],
+      "eqeqeq": "error",
+      "no-var": "error",
+      "indent": [
+        "error",
+        2
+      ],
+      "linebreak-style": [
+        "error",
+        "unix"
+      ],
+      "quotes": [
+        "error",
+        "single",
+        {
+          "allowTemplateLiterals": true
+        }
+      ],
+      "semi": [
+        "error",
+        "always"
+      ],
+      "semi-style": [
+        "error",
+        "last"
+      ],
+      "no-console": 0
+    }
+  },
+  "configSchema": {
+    "executablePath": {
+      "title": "Revive Executable Path",
+      "description": "The path to `revive` executable",
+      "type": "string",
+      "default": "revive"
+    },
+    "configFile": {
+      "title": "Configuration File",
+      "description": "Path to the configuration TOML file (i.e. revive.toml)",
+      "type": "string",
+      "default": "revive.toml"
+    },
+    "exclude": {
+      "title": "Exclude Files",
+      "description": "A list of globs which specify files to be excluded (i.e. foo/...)",
+      "type": "array",
+      "default": [],
+      "items": {
+        "type": "string"
+      }
+    },
+    "scopes": {
+      "title": "Scopes",
+      "type": "array",
+      "default": [
+        "source.go",
+        "go"
+      ],
+      "items": {
+        "type": "string"
+      }
+    }
+  }
+}
