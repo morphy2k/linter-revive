@@ -45,7 +45,7 @@
     "named-js-regexp": "^1.3.3"
   },
   "devDependencies": {
-    "eslint": "^5.0.1",
+    "eslint": "^5.1.0",
     "eslint-config-airbnb-base": "^13.0.0",
     "eslint-plugin-import": "^2.7.0"
   },
