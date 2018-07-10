@@ -46,7 +46,6 @@
   },
   "devDependencies": {
     "eslint": "^5.1.0",
-    "eslint-config-airbnb-base": "^13.0.0",
     "eslint-plugin-import": "^2.7.0"
   },
   "eslintConfig": {
@@ -76,10 +75,6 @@
           ]
         }
       ],
-      "strict": [
-        "error",
-        "global"
-      ],
       "eqeqeq": "error",
       "no-var": "error",
       "indent": [
@@ -92,10 +87,7 @@
       ],
       "quotes": [
         "error",
-        "single",
-        {
-          "allowTemplateLiterals": true
-        }
+        "single"
       ],
       "semi": [
         "error",
