@@ -7,6 +7,13 @@
 Atom linter plugin for [Go](https://golang.org/), using [Revive](https://github.com/mgechev/revive)
 
 ## Installation
+
+### Revive
+*Please make sure you use the latest version of Revive!*
+```BASH
+$ go get -u github.com/mgechev/revive
+```
+### Plugin
 ```BASH
 $ apm install linter-revive
 ```
