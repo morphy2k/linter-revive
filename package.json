@@ -113,7 +113,7 @@
     },
     "configFile": {
       "title": "Configuration File",
-      "description": "Path to the configuration TOML file (i.e. revive.toml)",
+      "description": "Path to the configuration TOML file (i.e. revive.toml). It must be placed within the project directory!",
       "type": "string",
       "default": "revive.toml"
     },
