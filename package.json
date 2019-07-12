@@ -44,11 +44,11 @@
   "dependencies": {
     "atom-linter": "^10.0.0",
     "atom-package-deps": "^5.1.0",
-    "execa": "^1.0.0"
+    "execa": "^2.0.3"
   },
   "devDependencies": {
-    "eslint": "^5.16.0",
-    "eslint-plugin-import": "^2.17.2"
+    "eslint": "^6.0.1",
+    "eslint-plugin-import": "^2.18.0"
   },
   "eslintConfig": {
     "env": {
