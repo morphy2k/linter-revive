@@ -1,6 +1,6 @@
 'use babel';
 
-import * as path from 'path';
+import path from 'path';
 
 const lint = require('../lib/main.js').provideLinter().lint;
 
