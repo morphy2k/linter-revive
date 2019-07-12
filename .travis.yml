@@ -20,7 +20,7 @@ after_script:
   - npm run lint
 
 ### Generic setup follows ###
-dist: trusty
+dist: xenial
 sudo: required
 group: sugilite
 
