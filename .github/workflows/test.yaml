@@ -1,25 +1,6 @@
-name: Lint & Test
+name: Test
 on: push
 jobs:
-
-  lint:
-    name: Lint
-    runs-on: ubuntu-latest
-    steps:
-
-    - name: Set up NodeJS
-      uses: actions/setup-node@v1
-      with:
-        node-version: '10.x'
-
-    - name: Check out code into the Go module directory
-      uses: actions/checkout@v1
-
-    - name: Install packages
-      run: npm install --only=dev
-
-    - name: Run linter
-      run: npm run lint
 
   test:
     name: Test on Atom ${{ matrix.atom_channel }} and ${{ matrix.os }}
@@ -47,8 +28,9 @@ jobs:
         ATOM_CHANNEL: ${{ matrix.atom_channel }}
         ATOM_LINT_WITH_BUNDLED_NODE: 'true'
       run: |
-        if [ "$(echo ${{ matrix.os }} | cut -f1 -d"-")" = "ubuntu" ]; then export TRAVIS_OS_NAME=linux; \
-        elif [ "$(echo ${{ matrix.os }} | cut -f1 -d"-")" = "macOS" ]; then export TRAVIS_OS_NAME=osx; \
+        export OS=$(echo ${{ matrix.os }} | cut -f1 -d"-")
+        if [ $OS = "ubuntu" ]; then export TRAVIS_OS_NAME=linux; \
+        elif [ $OS = "macOS" ]; then export TRAVIS_OS_NAME=osx; \
         else echo "Unknown OS!"; exit 1; fi
         export PATH=$PATH:$(go env GOPATH)/bin
         curl -s -O https://raw.githubusercontent.com/atom/ci/master/build-package.sh
