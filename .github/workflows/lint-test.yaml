@@ -22,11 +22,10 @@ jobs:
       run: npm run lint
 
   test:
-    name: Test on Go ${{ matrix.go_version }} and ${{ matrix.os }}
+    name: Test on Atom ${{ matrix.atom_channel }} and ${{ matrix.os }}
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
-        go_version: [1.11, 1.12]
         os: [ubuntu-latest]
         atom_channel: ['stable', 'beta']
     steps:
@@ -34,7 +33,7 @@ jobs:
     - name: Set up Go
       uses: actions/setup-go@v1
       with:
-        go-version: ${{ matrix.go_version }}
+        go-version: 1.12
       id: go
 
     - name: Get Revive
@@ -48,6 +47,9 @@ jobs:
         ATOM_CHANNEL: ${{ matrix.atom_channel }}
         ATOM_LINT_WITH_BUNDLED_NODE: 'true'
       run: |
+        if [ "$(echo ${{ matrix.os }} | cut -f1 -d"-")" = "ubuntu" ]; then export TRAVIS_OS_NAME=linux; \
+        elif [ "$(echo ${{ matrix.os }} | cut -f1 -d"-")" = "macOS" ]; then export TRAVIS_OS_NAME=osx; \
+        else echo "Unknown OS!"; exit 1; fi
         export PATH=$PATH:$(go env GOPATH)/bin
         curl -s -O https://raw.githubusercontent.com/atom/ci/master/build-package.sh
         chmod u+x build-package.sh
