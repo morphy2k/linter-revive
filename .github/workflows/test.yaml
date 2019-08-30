@@ -20,7 +20,7 @@ jobs:
     - name: Get Revive
       run: go get -v -u github.com/mgechev/revive
 
-    - name: Check out code into the Go module directory
+    - name: Check out code into the package directory
       uses: actions/checkout@v1
 
     - name: Run tests
