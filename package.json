@@ -46,7 +46,7 @@
     "execa": "^2.1.0"
   },
   "devDependencies": {
-    "eslint": "^6.5.1",
+    "eslint": "^6.6.0",
     "eslint-plugin-import": "^2.18.2"
   },
   "eslintConfig": {
