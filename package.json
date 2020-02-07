@@ -16,7 +16,7 @@
   "contributors": "https://github.com/morphy2k/linter-revive/graphs/contributors",
   "license": "MIT",
   "engines": {
-    "atom": ">=1.4.0 <2.0.0"
+    "atom": ">=1.39.0 <2.0.0"
   },
   "main": "./lib/main",
   "scripts": {
