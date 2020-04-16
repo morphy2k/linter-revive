@@ -1,6 +1,6 @@
 {
   "name": "linter-revive",
-  "version": "0.7.0",
+  "version": "0.7.1",
   "description": "Lint Go files, using Revive",
   "keywords": [
     "linter",
