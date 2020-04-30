@@ -39,4 +39,4 @@ jobs:
       run: apm ci
 
     - name: Run tests
-      run: apm test
+      run: atom --test spec
