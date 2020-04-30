@@ -1,40 +1,40 @@
 name: Test
-on: push
-jobs:
 
+on: push
+
+jobs:
   test:
     name: Test on Atom ${{ matrix.atom_channel }} and ${{ matrix.os }}
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
-        os: [ubuntu-latest]
+        os: [ubuntu-latest, macos-latest, windows-latest]
         atom_channel: ['stable', 'beta']
+
     steps:
 
     - name: Set up Go
       uses: actions/setup-go@v1
       with:
-        go-version: 1.12
+        go-version: 1.14
       id: go
 
     - name: Get Revive
-      env:
-        GO111MODULE: 'on'
       run: go get -v -u github.com/mgechev/revive@v1
 
     - name: Check out code into the package directory
       uses: actions/checkout@v1
 
+    - name: Set up Atom
+      uses: UziTech/action-setup-atom@v1
+      with:
+        channel: ${{ matrix.channel }}
+
+    - name: Get versions
+      run: atom -v && apm -v
+
+    - name: Install dependencies
+      run: apm ci
+
     - name: Run tests
-      env:
-        ATOM_CHANNEL: ${{ matrix.atom_channel }}
-        ATOM_LINT_WITH_BUNDLED_NODE: 'true'
-      run: |
-        export OS=$(echo ${{ matrix.os }} | cut -f1 -d"-")
-        if [ $OS = "ubuntu" ]; then export TRAVIS_OS_NAME=linux; \
-        elif [ $OS = "macOS" ]; then export TRAVIS_OS_NAME=osx; \
-        else echo "Unknown OS!"; exit 1; fi
-        export PATH=$PATH:$(go env GOPATH)/bin
-        curl -s -O https://raw.githubusercontent.com/atom/ci/master/build-package.sh
-        chmod u+x build-package.sh
-        ./build-package.sh
+      run: apm test
