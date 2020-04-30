@@ -20,6 +20,8 @@ jobs:
       id: go
 
     - name: Get Revive
+      env:
+          GO111MODULE: 'on'
       run: go get -v -u github.com/mgechev/revive@v1
 
     - name: Check out code into the package directory
