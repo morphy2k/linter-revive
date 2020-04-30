@@ -1,16 +1,38 @@
 name: Test
 
-on: push
+on:
+  push:
+    paths:
+      - '!**.md'
 
 jobs:
+
+  lint:
+    name: Lint
+    runs-on: ubuntu-latest
+    steps:
+
+    - name: Check out
+      uses: actions/checkout@v2
+
+    - name: Set up Node
+      uses: actions/setup-node@v1
+      with:
+        node-version: 12
+
+    - name: Install packages
+      run: npm ci
+
+    - name: Run linter
+      run: npm run lint
+
   test:
     name: Test on Atom ${{ matrix.atom_channel }} and ${{ matrix.os }}
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
         os: [ubuntu-latest, macos-latest, windows-latest]
-        atom_channel: ['stable', 'beta']
-
+        channel: ['stable', 'beta']
     steps:
 
     - name: Set up Go
@@ -23,13 +45,13 @@ jobs:
           GO111MODULE: 'on'
       run: go get -v -u github.com/mgechev/revive@v1
 
-    - name: Check out code into the package directory
-      uses: actions/checkout@v1
+    - name: Check out
+      uses: actions/checkout@v2
 
     - name: Set up Atom
       uses: UziTech/action-setup-atom@v1
       with:
-        atom_channel: ${{ matrix.channel }}
+        channel: ${{ matrix.channel }}
 
     - name: Get versions
       run: atom -v && apm -v
