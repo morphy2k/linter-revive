@@ -29,7 +29,7 @@ jobs:
     - name: Set up Atom
       uses: UziTech/action-setup-atom@v1
       with:
-        channel: ${{ matrix.channel }}
+        atom_channel: ${{ matrix.channel }}
 
     - name: Get versions
       run: atom -v && apm -v
