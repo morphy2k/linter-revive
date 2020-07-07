@@ -1,5 +1,4 @@
 ![Test](https://github.com/morphy2k/linter-revive/workflows/Test/badge.svg)
-[![Dependabot status](https://api.dependabot.com/badges/status?host=github&repo=morphy2k/linter-revive)](https://dependabot.com/)
 [![apm](https://img.shields.io/apm/v/linter-revive.svg)](https://atom.io/packages/linter-revive)
 
 # linter-revive
