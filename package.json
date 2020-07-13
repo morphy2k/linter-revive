@@ -43,7 +43,7 @@
   ],
   "dependencies": {
     "atom-package-deps": "^6.0.0",
-    "execa": "^4.0.2"
+    "execa": "^4.0.3"
   },
   "devDependencies": {
     "eslint": "^7.4.0",
