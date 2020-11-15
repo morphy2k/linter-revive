@@ -13,7 +13,6 @@
     "email": "mail@morphy2k.dev",
     "url": "https://morphy2k.dev"
   },
-  "contributors": "https://github.com/morphy2k/linter-revive/graphs/contributors",
   "license": "MIT",
   "engines": {
     "atom": ">=1.39.0 <2.0.0"
@@ -39,7 +38,7 @@
     }
   },
   "package-deps": [
-    "linter:2.0.0"
+    {"name": "linter", "minimumVersion": "2.0.0"}
   ],
   "dependencies": {
     "atom-package-deps": "^7.0.2",
