@@ -1,6 +1,6 @@
 {
   "name": "linter-revive",
-  "version": "0.7.1",
+  "version": "1.0.0",
   "description": "Lint Go files, using Revive",
   "keywords": [
     "linter",
@@ -38,7 +38,10 @@
     }
   },
   "package-deps": [
-    {"name": "linter", "minimumVersion": "2.0.0"}
+    {
+      "name": "linter",
+      "minimumVersion": "2.0.0"
+    }
   ],
   "dependencies": {
     "atom-package-deps": "^7.0.2",
