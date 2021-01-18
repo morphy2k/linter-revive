@@ -44,7 +44,7 @@
     }
   ],
   "dependencies": {
-    "atom-package-deps": "^7.0.2",
+    "atom-package-deps": "^7.1.0",
     "execa": "^4.1.0"
   },
   "devDependencies": {
