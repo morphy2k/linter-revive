@@ -1,0 +1,41 @@
+name: Release
+
+on:
+  push:
+    tags:
+    - 'v*.*.*'
+
+jobs:
+
+  publish:
+    name: Publish
+    runs-on: ubuntu-latest
+    steps:
+
+    - name: Set up Go
+      uses: actions/setup-go@v2
+      with:
+        go-version: '1.16'
+
+    - name: Get Revive
+      run: go get -v -u github.com/mgechev/revive@v1
+
+    - name: Check out
+      uses: actions/checkout@v2
+
+    - name: Set up Atom
+      uses: UziTech/action-setup-atom@v2
+      with:
+        version: stable
+
+    - name: Get versions
+      run: atom -v && apm -v
+
+    - name: Install dependencies
+      run: apm ci
+
+    - name: Login
+      run: apm login --token ${{ secrets.ATOM_API_TOKEN }}
+
+    - name: Publish
+      run: apm publish -t ${GITHUB_REF#refs/tags/}
