@@ -15,7 +15,7 @@ jobs:
     steps:
 
     - name: Check out
-      uses: actions/checkout@v2
+      uses: actions/checkout@v3
 
     - name: Set up Node
       uses: actions/setup-node@v2.1.5
@@ -46,7 +46,7 @@ jobs:
       run: go get -v -u github.com/mgechev/revive@v1
 
     - name: Check out
-      uses: actions/checkout@v2
+      uses: actions/checkout@v3
 
     - name: Set up Atom
       uses: UziTech/action-setup-atom@v2
